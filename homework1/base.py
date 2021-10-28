@@ -1,4 +1,5 @@
 import configparser
+import os
 
 import pytest
 from time import sleep
@@ -13,7 +14,7 @@ WAIT_TIMEOUT = 20
 RETRY_COUNT = 5
 
 config = configparser.ConfigParser()
-config.read("settings.ini")
+config.read(os.path.join(os.path.dirname(__file__), "settings.ini"))
 
 
 class BaseCase:

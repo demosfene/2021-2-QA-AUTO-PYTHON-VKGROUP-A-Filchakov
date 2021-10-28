@@ -15,16 +15,18 @@ class TestOne(BaseCase):
         self.login(email, password)
         sleep(3)
 
+    @pytest.mark.UI
     def test_login(self, login_init):
-        assert "Кампании" in self.driver.title
-        assert 'https://target.my.com/dashboard' in self.driver.current_url
 
+        assert self.find(basic_locators.LOGIN_DONE_PAGE_LOCATOR)
+
+    @pytest.mark.UI
     def test_logout(self, login_init):
         self.logout()
 
-        assert "Рекламная платформа myTarget — Сервис таргетированной рекламы" in self.driver.title
-        assert 'https://target.my.com/' in self.driver.current_url
+        assert self.find(basic_locators.MAIN_PAGE_LOCATOR)
 
+    @pytest.mark.UI
     def test_edit_user_info(self, login_init):
         self.click(basic_locators.PROFILE_LOCATOR)
         sleep(3)
@@ -39,13 +41,14 @@ class TestOne(BaseCase):
         assert str(self.find(basic_locators.FIO_LOCATOR).get_attribute("value")) == new_name
 
     @pytest.mark.parametrize(
-        "locator,url",
+        "locator,class_locator",
         [
-            (basic_locators.BILLING_LOCATOR, 'https://target.my.com/billing'),
-            (basic_locators.STATISTICS_LOCATOR, 'https://target.my.com/statistics')
+            (basic_locators.BILLING_MENU_LOCATOR, basic_locators.BILLING_CLASS_LOCATOR),
+            (basic_locators.STATISTICS_MENU_LOCATOR, basic_locators.STATISTICS_CLASS_LOCATOR)
         ]
     )
-    def test_go_to_page(self, login_init, locator, url):
+    @pytest.mark.UI
+    def test_go_to_page(self, login_init, locator, class_locator):
         self.click(locator)
 
-        assert url in self.driver.current_url
+        assert self.find(class_locator)
