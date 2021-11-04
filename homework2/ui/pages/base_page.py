@@ -19,6 +19,7 @@ class PageNotLoadedException(Exception):
 class BasePage(object):
     url = 'https://target.my.com/'
     locators = basic_locators.BasePageLocators
+    authorize = True
 
     def __init__(self, driver):
         self.driver = driver
