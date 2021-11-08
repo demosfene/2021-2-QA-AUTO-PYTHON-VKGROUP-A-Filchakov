@@ -1,6 +1,5 @@
 import random
 import string
-import pytest
 
 from base import BaseCase
 from ui.fixtures import *
@@ -9,16 +8,18 @@ from ui.fixtures import *
 class TestLoginFailure(BaseCase):
 
     @pytest.mark.UI
-    def test_create_traffic_company(self, file_path):
-        company_page = self.main_page.go_to_company_page()
-        company_page.create_new_company(file_path)
-        assert company_page.find(company_page.locators.NOTIFY_SUCCESS_CREATE_COMPANY_LOCATOR, 10)
+    def test_create_traffic_campaign(self, file_path):
+        campaign_page = self.main_page.go_to_campaign_page()
+        campaign_page.create_new_company(file_path)
+        assert campaign_page.find(campaign_page.locators.NOTIFY_SUCCESS_CREATE_COMPANY_LOCATOR, 10)
 
     @pytest.mark.UI
     def test_create_segment(self):
         audience_page = self.main_page.go_to_audience_page()
         id_segment = audience_page.create_new_segment()
+
         assert id_segment
+        audience_page.remove_segment(id_segment)
 
     @pytest.mark.UI
     def test_remove_segment(self):

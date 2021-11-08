@@ -37,9 +37,9 @@ class AudiencePage(BasePage):
 
     def remove_segment(self, id_segment):
         LOCATOR = (By.XPATH, '//div[contains(@data-test, "remove-'+id_segment+'")]')
-        remove_field = self.driver.find_element_by_xpath(xpath=LOCATOR[1])
+        remove_field = self.find(LOCATOR, 10)
         remove_field.click()
         try:
-            return self.driver.find_element_by_xpath(xpath=LOCATOR[1])
+            return self.find(LOCATOR, 10)
         except TimeoutException:
             return True

@@ -1,15 +1,11 @@
-import pytest
-from _pytest.fixtures import FixtureRequest
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 
-# from ui.fixtures import credentials
-from ui.pages.main_page import MainPage
 from ui.locators.basic_locators import LoginPageLocators
 from ui.pages.base_page import BasePage
+from ui.pages.main_page import MainPage
 
 
-#
 class LoginPage(BasePage):
     url = 'https://target.my.com/'
     locators = LoginPageLocators

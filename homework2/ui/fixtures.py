@@ -6,19 +6,17 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
+from files import constant
 from ui.pages.base_page import BasePage
-from ui.pages.company_page import CompanyPage
+from ui.pages.campaign_page import CampaignPage
 from ui.pages.login_page import LoginPage
 from ui.pages.main_page import MainPage
 
 
-
 @pytest.fixture(scope='session')
 def credentials():
-    with open('user', 'r') as f:
-        user = f.readline().strip()
-        password = f.readline().strip()
-        print(password)
+    user = constant.user
+    password = constant.password
 
     return user, password
 
@@ -46,7 +44,7 @@ def main_page(driver):
 
 @pytest.fixture
 def company_page(driver):
-    return CompanyPage(driver=driver)
+    return CampaignPage(driver=driver)
 
 
 def get_driver(config):

@@ -3,13 +3,11 @@ import time
 import allure
 from selenium.webdriver import ActionChains
 
+from files.constant import BASE_TIMEOUT, CLICK_RETRY
 from ui.locators import basic_locators
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-
-CLICK_RETRY = 3
-BASE_TIMEOUT = 10
 
 
 class PageNotLoadedException(Exception):
@@ -59,5 +57,5 @@ class BasePage(object):
                 elem.click()
                 return
             except StaleElementReferenceException:
-                if i == CLICK_RETRY-1:
+                if i == CLICK_RETRY - 1:
                     raise

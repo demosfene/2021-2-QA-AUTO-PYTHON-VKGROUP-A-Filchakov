@@ -1,15 +1,11 @@
-import os
-
-import pytest
 from _pytest.fixtures import FixtureRequest
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from ui.fixtures import *
-from ui.pages.login_page import LoginPage
 from ui.pages.base_page import BasePage
+from ui.pages.login_page import LoginPage
 from ui.pages.main_page import MainPage
 
-CLICK_RETRY = 3
 
 
 class BaseCase:
