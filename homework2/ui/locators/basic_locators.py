@@ -7,7 +7,7 @@ class BasePageLocators:
     PROFILE_LOCATOR = (By.XPATH, '//a[@href="/profile"]')
     BILLING_MENU_LOCATOR = (By.XPATH, '//a[@href="/billing"]')
     STATISTICS_MENU_LOCATOR = (By.XPATH, '//a[@href="/statistics"]')
-    COMPANY_PAGE_LOCATOR = (By.XPATH, '//a[@href="/dashboard"]')
+    CAMPAIGN_PAGE_LOCATOR = (By.XPATH, '//a[@href="/dashboard"]')
     AUDIENCE_PAGE_LOCATOR = (By.XPATH, '//a[@href="/segments"]')
 
 
@@ -37,11 +37,11 @@ class AudiencePageLocators(MainPageLocators):
 
 
 class CampaignPageLocators(MainPageLocators):
-    CREATE_COMPANY_BUTTON_LOCATOR = (By.XPATH, '//div[contains(@class, "dashboard-module-createButtonWrap")]'
+    CREATE_CAMPAIGN_BUTTON_LOCATOR = (By.XPATH, '//div[contains(@class, "dashboard-module-createButtonWrap")]'
                                                '//div[contains(@class, "button-module-button")]')
     TRAFFIC_BUTTON_LOCATOR = (By.XPATH, '//div[contains(@class, "_traffic")]')
-    URL_COMPANY_FIELD_LOCATOR = (By.XPATH, '//input[contains(@class, "mainUrl-module-searchInput")]')
-    COMPANY_NAME_FIELD_LOCATOR = (By.XPATH, '//div[contains(@class, "campaign-name__name-wrap")]'
+    URL_CAMPAIGN_FIELD_LOCATOR = (By.XPATH, '//input[contains(@class, "mainUrl-module-searchInput")]')
+    CAMPAIGN_NAME_FIELD_LOCATOR = (By.XPATH, '//div[contains(@class, "campaign-name__name-wrap")]'
                                             '//div[contains(@class, "input_campaign-name")]'
                                             '//div[contains(@class, "input__wrap")]'
                                             '//input[@type = "text"]')
@@ -58,7 +58,7 @@ class CampaignPageLocators(MainPageLocators):
                                        '//div[contains(@class, "footer__button")]'
                                        '//button[contains(@class, "button_submit")]')
 
-    NOTIFY_SUCCESS_CREATE_COMPANY_LOCATOR = (By.XPATH, '//div[contains(@class, "group-module-group")]'
+    NOTIFY_SUCCESS_CREATE_CAMPAIGN_LOCATOR = (By.XPATH, '//div[contains(@class, "group-module-group")]'
                                                        '//div[contains(@class, "group-module-item")]')
 
     def SETTINGS_BY_ID_LOCATOR(campaign_id):

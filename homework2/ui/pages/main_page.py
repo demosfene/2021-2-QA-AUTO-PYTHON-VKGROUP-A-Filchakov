@@ -9,7 +9,7 @@ class MainPage(BasePage):
     locators = MainPageLocators()
 
     def go_to_campaign_page(self):
-        self.click(self.locators.COMPANY_PAGE_LOCATOR, 10)
+        self.click(self.locators.CAMPAIGN_PAGE_LOCATOR, 10)
         return CampaignPage(self.driver)
 
     def go_to_audience_page(self):

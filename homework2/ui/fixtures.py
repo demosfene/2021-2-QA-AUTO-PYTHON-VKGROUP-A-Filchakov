@@ -43,12 +43,11 @@ def main_page(driver):
 
 
 @pytest.fixture
-def company_page(driver):
+def campaign_page(driver):
     return CampaignPage(driver=driver)
 
 
 def get_driver(config):
-    print(config)
     browser_name = config['browser']
 
     if browser_name == 'chrome':

@@ -10,8 +10,8 @@ class TestLoginFailure(BaseCase):
     @pytest.mark.UI
     def test_create_traffic_campaign(self, file_path):
         campaign_page = self.main_page.go_to_campaign_page()
-        campaign_page.create_new_company(file_path)
-        assert campaign_page.find(campaign_page.locators.NOTIFY_SUCCESS_CREATE_COMPANY_LOCATOR, 10)
+        campaign_page.create_new_campaign(file_path)
+        assert campaign_page.find(campaign_page.locators.NOTIFY_SUCCESS_CREATE_CAMPAIGN_LOCATOR, 10)
 
     @pytest.mark.UI
     def test_create_segment(self):
