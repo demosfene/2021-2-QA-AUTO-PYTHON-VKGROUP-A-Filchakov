@@ -10,5 +10,3 @@ class ApiBase:
 
         if self.authorize:
             self.api_client.login()
-
-

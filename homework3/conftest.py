@@ -1,6 +1,4 @@
 import os
-import shutil
-import sys
 
 import configparser
 
@@ -15,8 +13,9 @@ config.read(os.path.join(os.path.dirname(__file__), "settings.ini"))
 def credentials():
     user = config['User']['email']
     password = config['User']['password']
-
-    return user, password
+    data = config['Data']
+    locations = config['Locations']
+    return user, password, data, locations
 
 
 @pytest.fixture(scope='session')
