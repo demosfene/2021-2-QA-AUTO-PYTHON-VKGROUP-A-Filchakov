@@ -87,17 +87,16 @@ class ApiClient:
         self._request(method='POST', url='https://auth-ac.my.com/auth', headers=headers_post, data=data,
                       redirect=True)
         response_csrftoken = self._request('GET', self.locations['csrf'], headers=headers_get)
+        assert response_csrftoken.status_code == 200
         response_cookies = response_csrftoken.headers['Set-Cookie'].split(';')
         self.csrftoken = [c for c in response_cookies if 'csrftoken' in c][0].split('=')[-1]
 
         headers = headers_post
         headers['Cookie'] = f'mc={self.mc}; sdc={self.sdc}; csrftoken={self.csrftoken}'
 
-        response = self._request(method='POST', location=self.locations['dashboard'], headers=headers)
+        auth_user = self._request(method='GET', location='/api/v3/user.json', headers=headers)
 
-        find_login_on_page = response.text.find(f'data-ga-auth-username="{self.user}"')
-
-        return self.sdc is not None and self.mc is not None and self.csrftoken is not None and find_login_on_page != -1
+        return auth_user.status_code == 200
 
     def create_campaign(self):
         headers = self.post_headers
