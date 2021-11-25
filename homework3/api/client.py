@@ -104,10 +104,11 @@ class ApiClient:
         headers['X-CSRFToken'] = self.csrftoken
 
         data_campaign = eval(self.data_body['campaign'])
-        data_campaign['name'] = str(uuid.uuid4())
+        campaign_name = str(uuid.uuid4())
+        data_campaign['name'] = campaign_name
 
         response = self._request('POST', self.locations['create_campaigns'], headers=headers, json_data=data_campaign)
-        return response
+        return {'response': response, 'campaign_name': campaign_name}
 
     def create_segment(self):
         headers = self.post_headers
@@ -116,11 +117,12 @@ class ApiClient:
         headers['Content-Type'] = 'application/json'
 
         data_segment = eval(self.data_body['segment'])
-        data_segment['name'] = str(uuid.uuid4())
+        segment_name = str(uuid.uuid4())
+        data_segment['name'] = segment_name
 
         response = self._request(method='POST', location=self.locations['create_segments'], headers=headers,
                                  json_data=data_segment)
-        return response
+        return {'response': response, 'segment_name': segment_name}
 
     def get_segment(self, segment_id):
         headers = self.post_headers
