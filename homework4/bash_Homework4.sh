@@ -3,16 +3,7 @@ cat $1 | wc -l | awk '{printf "Общее колличество запросо�
 
 echo "">>homework.txt
 echo "Количество запросов по типам:" >>homework.txt
-grep "\"POST" $1 | wc -l | awk '{printf "POST:%s \n", $1 }'>> homework.txt
-grep "\"GET" $1 | wc -l | awk '{printf "GET:%s \n", $1 }'>> homework.txt
-grep "\"HEAD" $1 | wc -l | awk '{if ($1 != 0) printf "HEAD:%s \n", $1 }'>> homework.txt
-grep "\"PUT" $1 | wc -l | awk '{if ($1 != 0) printf "PUT:%s \n", $1 }'>> homework.txt
-grep "\"DELETE" $1 | wc -l | awk '{if ($1 != 0) printf "DELETE:%s \n", $1 }'>> homework.txt
-grep "\"PATCH" $1 | wc -l | awk '{if ($1 != 0) printf "PATCH:%s \n", $1 }'>> homework.txt
-grep "\"TRACE" $1 | wc -l | awk '{if ($1 != 0) printf "TRACE:%s \n", $1 }'>> homework.txt
-grep "\"CONNECT" $1 | wc -l | awk '{if ($1 != 0) printf "CONNECT:%s \n", $1 }'>> homework.txt
-grep "\"OPTIONS" $1 | wc -l | awk '{if ($1 != 0) printf "OPTIONS:%s \n", $1 }'>> homework.txt
-
+awk -F \" '{split($2, a, "\""); print a[1]}' $1 | awk -F \" '{split($1, a, " "); print a[1]}' | sort | uniq -c >> homework.txt
 
 echo "">>homework.txt
 echo "Топ 10 самых частых запросов:" >>homework.txt

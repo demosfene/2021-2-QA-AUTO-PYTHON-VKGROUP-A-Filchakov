@@ -26,12 +26,20 @@ print(f'Общее количество запросов:\n{len(connections)}', 
 results['total_connections'] = len(connections)
 
 print('\nОбщее количество запросов по типу:', file=file_output)
-for conn_type in ["POST", "GET", "HEAD", "UPDATE", "DELETE", "PUT", "PATCH", "TRACE", "CONNECT", "OPTIONS"]:
-    count = len([x for x in connections if x['type'] == conn_type])
-    results['count_by_types'] = {}
-    if count:
-        print(f'{conn_type}: {count}', file=file_output)
-        results['count_by_types'][conn_type] = count
+types = {}
+for connection in connections:
+    types.setdefault(connection["type"], 0)
+    types[connection["type"]] += 1
+results['count_by_types'] = {}
+for idx, url in enumerate({k: v for k, v in sorted(types.items(), key=lambda item: item[1], reverse=True)}):
+    print(f"{url}:\n\tcount: {types[url]}", file=file_output)
+    results['count_by_types'][url] = types[url]
+# for conn_type in ["POST", "GET", "HEAD", "UPDATE", "DELETE", "PUT", "PATCH", "TRACE", "CONNECT", "OPTIONS"]:
+#     count = len([x for x in connections if x['type'] == conn_type])
+#     results['count_by_types'] = {}
+#     if count:
+#         print(f'{conn_type}: {count}', file=file_output)
+#         results['count_by_types'][conn_type] = count
 
 print('\nТоп 10 самых частых запросов:', file=file_output)
 urls = {}
