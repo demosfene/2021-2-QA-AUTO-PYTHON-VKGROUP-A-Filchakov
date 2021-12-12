@@ -8,18 +8,22 @@ def pytest_configure(config):
     if not hasattr(config, 'workerinput'):
         mysql_orm_client.recreate_db()
     mysql_orm_client.connect(db_created=True)
-    if not hasattr(config, 'workerinput'):
-        mysql_orm_client.create_count_requests()
-        mysql_orm_client.create_count_request_of_type()
-        mysql_orm_client.create_count_request_of_url()
-        mysql_orm_client.create_count_request_of_length_4xx()
-        mysql_orm_client.create_count_request_of_users_5xx()
 
     config.mysql_orm_client = mysql_orm_client
+
+
+def pytest_addoption(parser):
+    parser.addoption('--file', default='C:\\Users\\Professional\\PycharmProjects\\repo\homework6\\test_sql_orm\\access.log')
 
 
 @pytest.fixture(scope='session')
 def mysql_orm_client(request) -> MysqlORMClient:
     client = request.config.mysql_orm_client
+
     yield client
     client.connection.close()
+
+@pytest.fixture(scope='session')
+def file_path(request):
+    file = request.config.getoption('--file')
+    yield file

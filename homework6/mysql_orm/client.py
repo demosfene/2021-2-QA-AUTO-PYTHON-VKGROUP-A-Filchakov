@@ -42,22 +42,6 @@ class MysqlORMClient:
         if fetch:
             return res.fetchall()
 
-    def create_count_requests(self):
-        if not inspect(self.engine).has_table('count_requests'):
-            Base.metadata.tables['count_requests'].create(self.engine)
-
-    def create_count_request_of_type(self):
-        if not inspect(self.engine).has_table('count_request_of_type'):
-            Base.metadata.tables['count_request_of_type'].create(self.engine)
-
-    def create_count_request_of_url(self):
-        if not inspect(self.engine).has_table('count_request_of_url'):
-            Base.metadata.tables['count_request_of_url'].create(self.engine)
-
-    def create_count_request_of_length_4xx(self):
-        if not inspect(self.engine).has_table('count_request_of_length_4xx'):
-            Base.metadata.tables['count_request_of_length_4xx'].create(self.engine)
-
-    def create_count_request_of_users_5xx(self):
-        if not inspect(self.engine).has_table('count_request_of_users_5xx'):
-            Base.metadata.tables['count_request_of_users_5xx'].create(self.engine)
+    def create_count_requests(self, table):
+        if not inspect(self.engine).has_table(table):
+            Base.metadata.tables[table].create(self.engine)
