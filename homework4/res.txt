@@ -1,0 +1,70 @@
+Общее количество запросов:
+225133
+
+Общее количество запросов по типу:
+GET:
+	count: 122095
+POST:
+	count: 102503
+HEAD:
+	count: 528
+PUT:
+	count: 6
+g369g=%40eval%01%28base64_decode%28%24_POST%5Bz0%5D%29%29%3B&z0=QGluaV9zZXQoImRpc3BsYXlfZXJyb3JzIiwiMCIpO0BzZXRfdGltZV9saW1pdCgwKTtAc2V0X21hZ2ljX3F1b3Rlc19ydW50aW1lKDApO2VjaG8oIi0%2bfCIpOztlY2hvKCJlNTBiNWYyYjRmNjc1NGFmMDljYzg0NWI4YjU4ZTA3NiIpOztlY2hvKCJ8PC0iKTs7ZGllKCk7GET:
+	count: 1
+
+Топ 10 самых частых запросов:
+/administrator/index.php:
+	count: 103932
+/apache-log/access.log:
+	count: 26336
+/:
+	count: 6940
+/templates/_system/css/general.css:
+	count: 4980
+/robots.txt:
+	count: 3199
+http://almhuette-raith.at/administrator/index.php:
+	count: 2356
+/favicon.ico:
+	count: 2201
+/wp-login.php:
+	count: 1644
+/administrator/:
+	count: 1563
+/templates/jp_hotel/css/template.css:
+	count: 1287
+
+Топ 5 самых больших по размеру запросов, которые завершились клиентской (4ХХ) ошибкой:
+/index.php?option=com_phocagallery&view=category&id=4025&Itemid=53
+	status_code: 404
+	length: 1417
+	ip: 189.217.45.73
+/index.php?option=com_phocagallery&view=category&id=7806&Itemid=53
+	status_code: 404
+	length: 1417
+	ip: 189.217.45.73
+/index.php?option=com_phocagallery&view=category&id=%28SELECT%20%28CASE%20WHEN%20%289168%3D4696%29%20THEN%209168%20ELSE%209168%2A%28SELECT%209168%20FROM%20INFORMATION_SCHEMA.CHARACTER_SETS%29%20END%29%29&Itemid=53
+	status_code: 404
+	length: 1417
+	ip: 189.217.45.73
+/index.php?option=com_phocagallery&view=category&id=%28SELECT%20%28CASE%20WHEN%20%281753%3D1753%29%20THEN%201753%20ELSE%201753%2A%28SELECT%201753%20FROM%20INFORMATION_SCHEMA.CHARACTER_SETS%29%20END%29%29&Itemid=53
+	status_code: 404
+	length: 1417
+	ip: 189.217.45.73
+/index.php?option=com_easyblog&view=dashboard&layout=write
+	status_code: 404
+	length: 1397
+	ip: 104.129.9.248
+
+Топ 5 пользователей по количеству запросов, которые завершились серверной (5ХХ) ошибкой:
+189.217.45.73
+	count: 225
+82.193.127.15
+	count: 4
+91.210.145.36
+	count: 3
+194.87.237.6
+	count: 2
+198.38.94.207
+	count: 2
